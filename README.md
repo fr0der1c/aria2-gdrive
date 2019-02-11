@@ -56,3 +56,38 @@ docker run -d \
 --cap-add SYS_ADMIN --device /dev/fuse \
 aria2-gdrive:latest
 ```
+
+#### Nginx configuration
+If your AriaNg port is 6801 and Aria2 port is 6802, you can use the following configuration.
+```
+server
+{
+    listen 80;
+    listen 443 ssl http2;
+    server_name aria2.example.com;
+    index index.html index.htm;
+    
+    ssl_certificate    /www/server/vhost/cert/fullchain.cer;
+    ssl_certificate_key    /www/server/vhost/cert/private.key;
+    ssl_protocols TLSv1.1 TLSv1.2;
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+
+    location /jsonrpc {
+        proxy_pass http://localhost:6802/jsonrpc;
+        proxy_redirect off;
+        proxy_set_header        X-Real-IP       $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+    location /
+    {
+        proxy_pass http://localhost:6801;
+    }
+}
+```
