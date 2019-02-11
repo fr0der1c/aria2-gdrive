@@ -1,3 +1,9 @@
+# aria2-gdrive
+Download files to Google Drive using Aria2. (Technically, download then move to Google Drive.) Embedded AriaNg, a web UI for Aria2.
+
+TODO:
+- Add certificate? make it more secure to work on public internet.
+
 
 ## Build
 ```bash
