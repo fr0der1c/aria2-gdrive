@@ -35,7 +35,7 @@ Choose the following:
 ## Run
 ```bash
 docker run -d \
--p 80:80 -p 6800:6800 \
+-p 6801:80 -p 6800:6800 \
 --name aria2 \
 -v $(pwd)/files/rclone:/root/.config/rclone \
 --cap-add SYS_ADMIN --device /dev/fuse \
