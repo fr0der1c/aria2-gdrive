@@ -4,13 +4,13 @@ Download files to Google Drive using Aria2. (Technically, download then move to 
 TODO:
 - Add certificate? make it more secure to work on public internet.
 
-
-## Build
+## Usage
+### Build
 ```bash
 docker build -t aria2-gdrive .  
 ```
 
-## Get Google Drive Key
+### Get Google Drive Key
 ```bash
 docker run --rm -it \
 -v $(pwd)/files/rclone:/root/.config/rclone \
@@ -32,7 +32,7 @@ Choose the following:
 - y
 - q
 
-## Run
+### Run
 ```bash
 docker run -d \
 -p 6801:80 -p 6800:6800 \
