@@ -17,9 +17,8 @@ RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip \
     && cd rclone-*-linux-amd64 \
     && cp rclone /usr/bin/ \
     && chown root:root /usr/bin/rclone \
-    && chmod 755 /usr/bin/rclone
-
-RUN mkdir -p /data/GoogleDrive
+    && chmod 755 /usr/bin/rclone \
+    && mkdir -p /data/GoogleDrive
 
 ADD files/aria2.conf /root/.aria2/aria2.conf
 ADD files/ariang-nginx.conf /etc/nginx/conf.d/default.conf
@@ -27,7 +26,8 @@ ADD files/start.sh /start.sh
 ADD files/rclone_upload.sh /rclone_upload.sh
 
 RUN chmod +x /start.sh \
-    && chmod +x /rclone_upload.sh
+    && chmod +x /rclone_upload.sh \
+    && touch /root/.aria2/aria2.session
 
 ENV ARIA2_RPC_SECRET=some_secret
 ENV ARIA2_RPC_TLS=false
