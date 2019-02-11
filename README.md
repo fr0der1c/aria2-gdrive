@@ -2,12 +2,12 @@
 Download files to Google Drive using Aria2. (Technically, download then move to Google Drive using rclone.) Embedded AriaNg, a web UI for Aria2.
 
 TODO:
-- Add certificate? make it more secure to work on public internet.
+- Add SSL make it more secure to work on public internet.
 
 ## Usage
 ### Build
 ```bash
-docker build -t aria2-gdrive .  
+docker build -t aria2-gdrive .
 ```
 
 ### Get Google Drive Key
