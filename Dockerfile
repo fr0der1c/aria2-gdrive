@@ -29,6 +29,9 @@ ADD files/rclone_upload.sh /rclone_upload.sh
 RUN chmod +x /start.sh \
     && chmod +x /rclone_upload.sh
 
+ENV ARIA2_RPC_SECRET=some_secret
+ENV ARIA2_RPC_TLS=false
+
 EXPOSE 80
 
 CMD ["/start.sh"]

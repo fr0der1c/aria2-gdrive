@@ -36,6 +36,7 @@ Choose the following:
 ```bash
 docker run -d \
 -p 6801:80 -p 6800:6800 \
+-e ARIA2_RPC_SECRET=[your aria2 password here, default is some_secret]\
 --name aria2 \
 -v $(pwd)/files/rclone:/root/.config/rclone \
 --cap-add SYS_ADMIN --device /dev/fuse \
