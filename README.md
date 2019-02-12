@@ -91,3 +91,12 @@ server
     }
 }
 ```
+
+## Changelog
+### 2.0
+- Added a vacuum to delete files of canceled tasks every 10 seconds(beta)
+- Adjusted log level
+- Added a script that get latest BT trackers and added to aria2 config file when the container starts
+- Added BT/DHT port
+- TLS support
+- Aria2 session support
