@@ -6,7 +6,7 @@ import os
 import time
 from xmlrpc import client as xmlc
 
-print("file_vacuum.py started to work. sleep 10s.")
+print("file_vacuum.py started to work. sleep 10s.", flush=True)
 time.sleep(10)
 
 rpcUrl = 'http://127.0.0.1:6800/rpc'
@@ -18,7 +18,7 @@ s = xmlc.ServerProxy(rpcUrl)
 api = s.aria2
 
 while True:
-    print('file_vacuum.py start to clean dirty files')
+    print('file_vacuum.py start to clean dirty files', flush=True)
     tasks = api.tellActive(rpcToken)
     tasks += api.tellStopped(rpcToken, 0, 99)
     tasks += api.tellWaiting(rpcToken, 0, 99)
@@ -42,7 +42,7 @@ while True:
     # del same items
     fileWhiteList = set(fileWhiteList)
 
-    print('fileWhiteList', fileWhiteList)
+    print('fileWhiteList', fileWhiteList, flush=True)
 
 
     def str_contain_list_item(string, lst):
@@ -57,13 +57,13 @@ while True:
             path = os.path.join(parent, filename)
             if not str_contain_list_item(path, fileWhiteList):
                 os.remove(path)
-                print('del file: ', filename)
+                print('del file: ', filename, flush=True)
         for dirname in dirnames:
             path = os.path.join(parent, dirname)
             if not str_contain_list_item(path, fileWhiteList):
                 try:
                     os.rmdir(path)
-                    print('del dir:  ', dirname)
+                    print('del dir:  ', dirname, flush=True)
                 finally:
                     pass
 
