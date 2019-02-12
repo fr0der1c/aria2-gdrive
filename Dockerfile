@@ -24,9 +24,11 @@ ADD files/aria2.conf /root/.aria2/aria2.conf
 ADD files/ariang-nginx.conf /etc/nginx/conf.d/default.conf
 ADD files/start.sh /start.sh
 ADD files/rclone_upload.sh /rclone_upload.sh
+ADD files/update_trackers.sh /update_trackers.sh
 
 RUN chmod +x /start.sh \
     && chmod +x /rclone_upload.sh \
+    && chmod +x /update_trackers.sh \
     && touch /root/.aria2/aria2.session
 
 ENV ARIA2_RPC_SECRET=some_secret
