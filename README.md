@@ -96,6 +96,10 @@ server
 }
 ```
 
+## Known issues
+Since we cannot stream the files to Google while downloading, your disk size must be larger than 2x of the file(s) you download. If you managed to break this limitation, welcome to give me a pull request.
+
+
 ## Changelog
 ### 2.0
 - Added a vacuum to delete files of canceled tasks every 10 seconds(beta)
