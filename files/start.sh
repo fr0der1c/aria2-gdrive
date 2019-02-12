@@ -3,7 +3,7 @@ sh /update_trackers.sh
 
 /file_vacuum/.venv/bin/python /file_vacuum/vacuum.py > /var/log/file_vacuum.log &
 
-rclone mount my-drive:/ /data/GoogleDrive --allow-other --allow-non-empty --vfs-cache-mode writes --daemon
+rclone mount my-drive:/ /data/GoogleDrive --allow-other --allow-non-empty --vfs-cache-mode writes --daemon --progress --log-file /var/log/gdrive.log
 
 nginx
 
