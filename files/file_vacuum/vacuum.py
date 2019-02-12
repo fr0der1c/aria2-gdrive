@@ -12,7 +12,6 @@ import logbook
 rpcUrl = 'http://127.0.0.1:6800/rpc'
 rpcToken = 'token:' + os.environ.get("ARIA2_RPC_SECRET")
 downloadPath = '/data/Download/'  # same to aria2 config
-file_whitelist = set()  # while list for deletion
 
 logger = logbook.Logger(__name__)
 stdout_handler = logbook.StreamHandler(stream=sys.stdout, bubble=True)
@@ -34,6 +33,7 @@ def str_contain_set_item(string, st):
 
 def vacuum():
     logger.info('file_vacuum start')
+    file_whitelist = set()  # while list for deletion
     tasks = api.tellActive(rpcToken)
     tasks += api.tellStopped(rpcToken, 0, 99)
     tasks += api.tellWaiting(rpcToken, 0, 99)
