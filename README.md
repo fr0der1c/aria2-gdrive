@@ -40,9 +40,10 @@ docker run -d \
 -v path/to/your.key:/aria2.key \
 -v path/to/your.crt:/aria2.crt \
 -e RPC_SECURE=[true|false, default is false] \
---name aria2 \
+-v $(pwd)/data:/data \
 -v $(pwd)/files/rclone:/root/.config/rclone \
 --cap-add SYS_ADMIN --device /dev/fuse \
+--name aria2 \
 aria2-gdrive:latest
 ```
 If you wish to use SSL/TLS with aria2, use the command above. If you wish to use plain HTTP or you want to use an reverse proxy to add TLS (I personally prefer this way), omit the key, crt and `RPC_SECURE` line:
@@ -51,11 +52,14 @@ If you wish to use SSL/TLS with aria2, use the command above. If you wish to use
 docker run -d \
 -p 6801:80 -p 6800:6800 -p 6881:6881 -p 6882:6882 \
 -e ARIA2_RPC_SECRET=[your aria2 password here, default is some_secret]\
---name aria2 \
 -v $(pwd)/files/rclone:/root/.config/rclone \
+-v $(pwd)/data:/data \
 --cap-add SYS_ADMIN --device /dev/fuse \
+--name aria2 \
 aria2-gdrive:latest
 ```
+
+The `-v $(pwd)/data:/data` is optional. Add it if you want to view the files without entering container.
 
 #### Nginx configuration
 If your AriaNg port is 6801 and Aria2 port is 6802, you can use the following configuration.
