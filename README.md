@@ -49,7 +49,7 @@ If you wish to use SSL/TLS with aria2, use the command above. If you wish to use
 
 ```bash
 docker run -d \
--p 6801:80 -p 6800:6800 -p 6881:6881 \
+-p 6801:80 -p 6800:6800 -p 6881:6881 -p 6882:6882 \
 -e ARIA2_RPC_SECRET=[your aria2 password here, default is some_secret]\
 --name aria2 \
 -v $(pwd)/files/rclone:/root/.config/rclone \
