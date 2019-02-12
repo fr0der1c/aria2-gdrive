@@ -35,5 +35,6 @@ ENV ARIA2_RPC_SECRET=some_secret
 ENV ARIA2_RPC_TLS=false
 
 EXPOSE 80
+EXPOSE 6800
 
 CMD ["/start.sh"]
