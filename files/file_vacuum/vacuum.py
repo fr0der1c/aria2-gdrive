@@ -70,7 +70,7 @@ def vacuum():
                     logger.warn('del dir:  '.format(dirname))
                 finally:
                     pass
-        logger.info('file_vacuum end')
+    logger.info('file_vacuum end')
 
 
 while True:
