@@ -100,3 +100,6 @@ server
 - Added BT/DHT port
 - TLS support
 - Aria2 session support
+
+### 1.0
+first version
