@@ -3,7 +3,7 @@ FROM alpine:edge
 LABEL maintainer="frederic.t.chan@gmail.com"
 
 RUN apk update \
-    && apk add --no-cache bash aria2 nginx curl fuse\
+    && apk add --no-cache bash aria2 nginx curl fuse python3\
     && wget https://github.com/mayswind/AriaNg-DailyBuild/archive/master.zip \
     && unzip master.zip \
     && rm -rf master.zip \
@@ -25,6 +25,7 @@ ADD files/ariang-nginx.conf /etc/nginx/conf.d/default.conf
 ADD files/start.sh /start.sh
 ADD files/rclone_upload.sh /rclone_upload.sh
 ADD files/update_trackers.sh /update_trackers.sh
+ADD files/file_vacuum.py /file_vacuum.py
 
 RUN chmod +x /start.sh \
     && chmod +x /rclone_upload.sh \
