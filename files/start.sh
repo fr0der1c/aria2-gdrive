@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 sh /update_trackers.sh
 
-python3 /file_vacuum.py > /var/log/file_vacuum.log &
+/file_vacuum/.venv/bin/python /file_vacuum/vacuum.py > /var/log/file_vacuum.log &
 
 rclone mount my-drive:/ /data/GoogleDrive --allow-other --allow-non-empty --vfs-cache-mode writes --daemon
 
